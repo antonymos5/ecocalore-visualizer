@@ -77,7 +77,8 @@ h1 em{color:var(--fire);font-style:italic}
 @media(max-width:560px){.bag{grid-template-columns:1fr}}
 .bac{border-radius:var(--r);overflow:hidden;background:var(--bg2);border:1px solid var(--border)}
 .bal{padding:10px 15px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
-.bai{width:100%;height:220px;object-fit:cover;display:block}
+.bai{width:100%;height:220px;object-fit:contain;display:block;background:var(--bg3);padding:8px}
+.bai-room{width:100%;height:220px;object-fit:cover;display:block}
 .bap{width:100%;height:220px;background:linear-gradient(135deg,#1a1510,#251a10);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted)}
 .bap .ic{font-size:36px}.bap p{font-size:12px;text-align:center;max-width:160px;line-height:1.5}
 .vcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:14px}
@@ -120,36 +121,260 @@ footer{border-top:1px solid var(--border);padding:24px 20px;text-align:center}
 <div id="s-upload" class="fu"><div class="notice">&#x1F4A1; <strong>Suggerimento:</strong> Scatta la foto dalla porta d'ingresso cos&igrave; si vedono bene le pareti e lo spazio disponibile.</div><div class="uz" id="uz" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="dropFile(event)" onclick="document.getElementById('fi').click()"><input type="file" id="fi" accept="image/*" style="display:none" onchange="pickFile(this.files[0])"/><span class="ui">📸</span><div class="ut">Trascina qui la foto della tua stanza</div><div class="us">oppure clicca per selezionare</div><div class="uf"><span class="ufmt">JPG</span><span class="ufmt">PNG</span><span class="ufmt">WEBP</span><span class="ufmt">HEIC</span></div></div></div>
 <div id="s-preview" style="display:none" class="fu"><div class="pw"><div class="piw"><img id="prev-img" src="" alt="Stanza"/><div class="pb">&#x1F4F7; La tua stanza</div></div><div class="pa"><button class="btng" onclick="goBack()">↩ Cambia foto</button><button class="btn" id="analyze-btn" onclick="doAnalyze()">🔍 Analizza con AI</button></div></div></div>
 <div id="s-loading" style="display:none"><div class="lcard"><span class="fl">🔥</span><div class="lt">Analisi in corso&hellip;</div><div class="lsub">L'AI studia la tua stanza e seleziona il modello Moretti Design ideale</div><div class="lsteps"><div class="lstep on" id="ls0">Rilevamento layout e dimensioni</div><div class="lstep" id="ls1">Analisi stile e arredo</div><div class="lstep" id="ls2">Selezione modello dal catalogo</div><div class="lstep" id="ls3">Calcolo posizione ottimale</div><div class="lstep" id="ls4">Preparazione visualizzazione</div></div><div class="trk"><div class="fill" id="lprog" style="width:0%"></div></div></div></div>
-<div id="s-gen-loading" style="display:none"><div class="lcard"><span class="fl">🎨</span><div class="lt">Generazione immagine&hellip;</div><div class="lsub">L'AI inserisce la stufa Moretti Design nella tua stanza &middot; 30&ndash;60 secondi</div><div class="lsteps"><div class="lstep on" id="gl0">Analisi struttura stanza</div><div class="lstep" id="gl1">Rendering AI</div><div class="lstep" id="gl2">Rifinitura luci e dettagli</div></div><div class="trk"><div class="fill" id="gprog" style="width:0%"></div></div></div></div>
 <div id="s-error" style="display:none"><div class="errbox" id="err-msg"></div><button class="btng" onclick="goBack()">← Riprova</button></div>
-<div id="s-results" style="display:none"><div class="fu" style="margin-bottom:10px"><div class="rbadge">✅ Analisi completata</div></div><div class="rtitle fu2" id="res-title">Il prodotto Moretti Design ideale per te</div>
-<div class="prodcard fu2"><div><div class="peyebrow">🔥 Moretti Design &mdash; Consigliato per te</div><div class="pname" id="pname">&mdash;</div><div class="ptype" id="ptype">&mdash;</div><div class="pdets"><div class="pdet"><div class="pdet-lbl">Potenza</div><div class="pdet-val" id="ppow">&mdash;</div></div><div class="pdet"><div class="pdet-lbl">Dimensioni</div><div class="pdet-val" id="pdim">&mdash;</div></div><div class="pdet"><div class="pdet-lbl">Stile</div><div class="pdet-val" id="pstyle">&mdash;</div></div><div class="pdet"><div class="pdet-lbl">Posizione ideale</div><div class="pdet-val" id="ppos">&mdash;</div></div></div></div><div class="palt"><div class="palt-lbl">In alternativa</div><div class="palt-val" id="palt">&mdash;</div></div></div>
-<div class="ccard fu3"><div class="ch"><span class="cl">Compatibilit&agrave; prodotto&ndash;stanza</span><span class="cp" id="cpct">&mdash;%</span></div><div class="trk"><div class="fill" id="cbar" style="width:0%"></div></div></div>
-<div class="bag fu3"><div class="bac"><div class="bal">&#x1F4F7; Prima &mdash; La tua stanza</div><img class="bai" id="before-img" src="" alt="Prima"/></div><div class="bac"><div class="bal">🔥 Dopo &mdash; Con il <span id="after-lbl">Moretti Design</span></div><div id="after-ph" class="bap"><div class="ic">🎨</div><p>Premi il pulsante qui sotto per la visualizzazione</p></div><img id="after-img" class="bai" src="" alt="Dopo" style="display:none"/></div></div>
-<div class="genbtn-wrap fu3" id="gen-wrap"><button class="btn genbtn" onclick="doGenerate()">🎨 Genera visualizzazione &mdash; vedi la stufa nella tua stanza</button></div>
-<div class="vcard fu3"><div class="vtitle">&#x2728; Perch&eacute; questo modello &egrave; perfetto per te</div><div id="vlist"></div></div>
-<div class="viscard fu4"><div class="visglow"></div><div class="viseyebrow">&#x1F3E0; Come apparir&agrave; la tua stanza</div><p class="vistxt" id="vis-txt">&mdash;</p></div>
-<div class="tcard fu4"><div class="tlabel">&#x1F527; Considerazioni tecniche per l'installazione</div><p class="ttxt" id="tech-txt">&mdash;</p></div>
-<div class="leadcard fu4"><div class="leadglow"></div><div class="leadq" id="lead-quote">&mdash;</div><div class="lform"><div class="lrow"><input class="linput" type="text" id="l-nome" placeholder="Il tuo nome *"/><input class="linput" type="tel" id="l-tel" placeholder="Telefono *"/></div><div class="lrow"><input class="linput" type="text" id="l-comune" placeholder="Il tuo comune"/><input class="linput" type="email" id="l-email" placeholder="Email (opzionale)"/></div><input class="linput" style="width:100%;margin-bottom:10px" type="text" id="l-note" placeholder="Note: misure stanza, impianto attuale&hellip;"/><div class="lactions"><a class="btnwa" id="wa-link" href="#" target="_blank" onclick="return buildWA()">💬 Richiedi preventivo gratuito via WhatsApp</a></div><div class="linfo">🔒 Dati non salvati online &middot; Contattato solo da EcoCalore Lodigiano &middot; Preventivo sempre gratuito</div></div><button class="rstbtn" onclick="resetAll()">🔄 Analizza un'altra stanza</button></div></div>
+<div id="s-results" style="display:none">
+  <div class="fu" style="margin-bottom:10px"><div class="rbadge">✅ Analisi completata</div></div>
+  <div class="rtitle fu2" id="res-title">Il prodotto Moretti Design ideale per te</div>
+  <div class="prodcard fu2">
+    <div>
+      <div class="peyebrow">🔥 Moretti Design &mdash; Consigliato per te</div>
+      <div class="pname" id="pname">&mdash;</div>
+      <div class="ptype" id="ptype">&mdash;</div>
+      <div class="pdets">
+        <div class="pdet"><div class="pdet-lbl">Potenza</div><div class="pdet-val" id="ppow">&mdash;</div></div>
+        <div class="pdet"><div class="pdet-lbl">Dimensioni</div><div class="pdet-val" id="pdim">&mdash;</div></div>
+        <div class="pdet"><div class="pdet-lbl">Stile</div><div class="pdet-val" id="pstyle">&mdash;</div></div>
+        <div class="pdet"><div class="pdet-lbl">Posizione ideale</div><div class="pdet-val" id="ppos">&mdash;</div></div>
+      </div>
+    </div>
+    <div class="palt"><div class="palt-lbl">In alternativa</div><div class="palt-val" id="palt">&mdash;</div></div>
+  </div>
+  <div class="ccard fu3">
+    <div class="ch"><span class="cl">Compatibilit&agrave; prodotto&ndash;stanza</span><span class="cp" id="cpct">&mdash;%</span></div>
+    <div class="trk"><div class="fill" id="cbar" style="width:0%"></div></div>
+  </div>
+  <!-- SEZIONE PRIMA / DOPO con foto reale prodotto -->
+  <div class="bag fu3">
+    <div class="bac">
+      <div class="bal">&#x1F4F7; La tua stanza</div>
+      <img class="bai-room" id="before-img" src="" alt="Prima"/>
+    </div>
+    <div class="bac">
+      <div class="bal">🔥 Prodotto consigliato &mdash; <span id="after-lbl">Moretti Design</span></div>
+      <div id="after-ph" class="bap"><div class="ic">🔥</div><p>Foto ufficiale Moretti Design</p></div>
+      <img id="after-img" class="bai" src="" alt="Prodotto Moretti Design" style="display:none"/>
+    </div>
+  </div>
+  <!-- LINK AL PRODOTTO SU MORETTI DESIGN -->
+  <div class="genbtn-wrap fu3" id="gen-wrap">
+    <a class="btn genbtn" id="moretti-link" href="https://morettidesign.it/prodotti/" target="_blank" style="text-decoration:none">
+      🔗 Vedi il prodotto ufficiale su Moretti Design →
+    </a>
+  </div>
+  <div class="vcard fu3"><div class="vtitle">&#x2728; Perch&eacute; questo modello &egrave; perfetto per te</div><div id="vlist"></div></div>
+  <div class="viscard fu4"><div class="visglow"></div><div class="viseyebrow">&#x1F3E0; Come apparir&agrave; la tua stanza</div><p class="vistxt" id="vis-txt">&mdash;</p></div>
+  <div class="tcard fu4"><div class="tlabel">&#x1F527; Considerazioni tecniche per l'installazione</div><p class="ttxt" id="tech-txt">&mdash;</p></div>
+  <div class="leadcard fu4">
+    <div class="leadglow"></div>
+    <div class="leadq" id="lead-quote">&mdash;</div>
+    <div class="lform">
+      <div class="lrow"><input class="linput" type="text" id="l-nome" placeholder="Il tuo nome *"/><input class="linput" type="tel" id="l-tel" placeholder="Telefono *"/></div>
+      <div class="lrow"><input class="linput" type="text" id="l-comune" placeholder="Il tuo comune"/><input class="linput" type="email" id="l-email" placeholder="Email (opzionale)"/></div>
+      <input class="linput" style="width:100%;margin-bottom:10px" type="text" id="l-note" placeholder="Note: misure stanza, impianto attuale&hellip;"/>
+      <div class="lactions"><a class="btnwa" id="wa-link" href="#" target="_blank" onclick="return buildWA()">💬 Richiedi preventivo gratuito via WhatsApp</a></div>
+      <div class="linfo">🔒 Dati non salvati online &middot; Contattato solo da EcoCalore Lodigiano &middot; Preventivo sempre gratuito</div>
+    </div>
+    <button class="rstbtn" onclick="resetAll()">🔄 Analizza un'altra stanza</button>
+  </div>
+</div>
 </main>
-<footer><div class="ft">&copy; 2025 EcoCalore Lodigiano &mdash; Verde Oliva S.r.l.s &middot; P.IVA IT10927440965 &middot; Casalmaiocco (LO)</div><div class="fs">Rivenditore autorizzato Moretti Design &middot; Powered by Claude AI &middot; Immagini generate a scopo illustrativo</div></footer>
+<footer><div class="ft">&copy; 2025 EcoCalore Lodigiano &mdash; Verde Oliva S.r.l.s &middot; P.IVA IT10927440965 &middot; Casalmaiocco (LO)</div><div class="fs">Rivenditore autorizzato Moretti Design &middot; Powered by Claude AI &middot; Foto prodotti: &copy; Moretti Design</div></footer>
 <script>
 const WORKER_URL='https://ecocalore-api.antoniomoscato.workers.dev';
 const WA_NUMBER='393471234567';
-const IMG_ENABLE=true;
 let S={b64:null,mime:'image/jpeg',analysis:null};
+
+// ── FOTO REALI MORETTI DESIGN ──────────────────────────────────────
+const MORETTI_IMAGES={
+  'CLESSIDRA GLASS PELLET':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente19.png',
+  'CLESSIDRA AQUA':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente19.png',
+  'CLESSIDRA LEGNA':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_CLESSIDRA-2-min.png',
+  'ALADINO PELLET':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente13.png',
+  'ALADINO AQUA':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente13.png',
+  'ALADINO LEGNA':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_ALADINO-2-min.png',
+  'ALADINO NO FAN':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente13.png',
+  'DREAM':'https://morettidesign.it/wp-content/uploads/2021/03/DREAM.png',
+  'HARMONY':'https://morettidesign.it/wp-content/uploads/2026/04/%E2%80%8Eprodotti-moretti.%E2%80%8E004.jpeg',
+  'COMPACT VISION':'https://morettidesign.it/wp-content/uploads/2022/05/Vision-vincitrice-del-premio-design-prize-x.png',
+  'COMPACT GLASS':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente11.png',
+  'EXCLUSIVE GLASS':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente7.png',
+  'ELEGANCE':'https://morettidesign.it/wp-content/uploads/2022/05/eleganceallstyle-rosso.png',
+  'ERGONOMIC':'https://morettidesign.it/wp-content/uploads/2022/05/ergonomic-rosso.png',
+  'MONODESIGN 60':'https://morettidesign.it/wp-content/uploads/2023/09/WOOD_MONO-60-2.png',
+  'MONODESIGN 70':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_MONO-70-2-min.png',
+  'MONODESIGN 80':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_MONO-80-2-min.png',
+  'MONODESIGN 90':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_MONO-90-2-min.png',
+  'MONODESIGN 120':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_MONO-120-2-min.png',
+  'LATODESIGN 60':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_LAT-60-DX-2-min.png',
+  'LATODESIGN 90':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_LAT-90-DX-2-min.png',
+  'TRIODESIGN':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_TRIO-2-min.png',
+  'KORIN 700':'https://morettidesign.it/wp-content/uploads/2026/04/%E2%80%8Eprodotti-moretti.%E2%80%8E001.jpeg',
+  'KORIN 870':'https://morettidesign.it/wp-content/uploads/2026/04/%E2%80%8Eprodotti-moretti.%E2%80%8E002.jpeg',
+  'KORIN 1000':'https://morettidesign.it/wp-content/uploads/2026/04/%E2%80%8Eprodotti-moretti.%E2%80%8E003.jpeg',
+  'SLOT FLAT':'https://morettidesign.it/wp-content/uploads/2023/06/WOOD_SLOT-FLAT-2-min.png',
+  'SLOT GLASS':'https://morettidesign.it/wp-content/uploads/2022/05/Slot-Glass.png',
+  'SLOT VISION':'https://morettidesign.it/wp-content/uploads/2021/03/SLOT-VISION.png'
+};
+
+// URL pagine prodotto su morettidesign.it
+const MORETTI_URLS={
+  'CLESSIDRA':'https://morettidesign.it/prodotti/clessidra/',
+  'ALADINO':'https://morettidesign.it/prodotti/aladino/',
+  'DREAM':'https://morettidesign.it/pellet/dream/',
+  'HARMONY':'https://morettidesign.it/prodotti/harmony/',
+  'COMPACT VISION':'https://morettidesign.it/prodotti/compact-vision/',
+  'COMPACT GLASS':'https://morettidesign.it/prodotti/compact-glass/',
+  'ELEGANCE':'https://morettidesign.it/legna/elegance-wood/',
+  'ERGONOMIC':'https://morettidesign.it/prodotti/ergonimic/',
+  'MONODESIGN':'https://morettidesign.it/legna/monodesign-90/',
+  'LATODESIGN':'https://morettidesign.it/legna/latodesign-60-dx/',
+  'TRIODESIGN':'https://morettidesign.it/legna/triodesign-90/',
+  'KORIN':'https://morettidesign.it/prodotti/korin-700',
+  'SLOT':'https://morettidesign.it/prodotti/slot-vision/'
+};
+
+function getProductImage(name){
+  if(!name)return null;
+  const u=name.toUpperCase();
+  for(const[k,v]of Object.entries(MORETTI_IMAGES)){
+    if(u.includes(k.toUpperCase()))return v;
+  }
+  // fallback: primo token
+  const first=u.split(' ')[0];
+  for(const[k,v]of Object.entries(MORETTI_IMAGES)){
+    if(k.toUpperCase().startsWith(first))return v;
+  }
+  return null;
+}
+
+function getProductUrl(name){
+  if(!name)return'https://morettidesign.it/prodotti/';
+  const u=name.toUpperCase();
+  for(const[k,v]of Object.entries(MORETTI_URLS)){
+    if(u.includes(k.toUpperCase()))return v;
+  }
+  return'https://morettidesign.it/prodotti/';
+}
+// ──────────────────────────────────────────────────────────────────
+
 document.getElementById('wa-header').href='https://wa.me/'+WA_NUMBER;
+
 function dropFile(e){e.preventDefault();document.getElementById('uz').classList.remove('drag');pickFile(e.dataTransfer.files[0]);}
-function pickFile(file){if(!file?.type.startsWith('image/'))return showErr('File non valido.');S.mime='image/jpeg';const img=new Image();const reader=new FileReader();reader.onload=e=>{img.onload=()=>{const canvas=document.createElement('canvas');const MAX=1400;let w=img.width,h=img.height;if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);const url=canvas.toDataURL('image/jpeg',0.82);S.b64=url.split(',')[1];document.getElementById('prev-img').src=url;document.getElementById('before-img').src=url;show('s-preview');pill(1);};img.src=e.target.result;};reader.readAsDataURL(file);}
-async function doAnalyze(){document.getElementById('analyze-btn').disabled=true;show('s-loading');pill(2);const ls=['ls0','ls1','ls2','ls3','ls4'];const prog=document.getElementById('lprog');let i=0;const t=setInterval(()=>{if(i>0){document.getElementById(ls[i-1]).classList.remove('on');document.getElementById(ls[i-1]).classList.add('done');}if(i<ls.length){document.getElementById(ls[i]).classList.add('on');prog.style.width=`${(i+1)/ls.length*80}%`;i++;}},1200);try{const res=await fetch(`${WORKER_URL}/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:S.b64,imageMime:S.mime})});clearInterval(t);prog.style.width='100%';const data=await res.json();if(!res.ok||data.error)throw new Error(data.error||'Errore analisi');S.analysis=data.analysis;setTimeout(render,400);}catch(err){clearInterval(t);document.getElementById('analyze-btn').disabled=false;show('s-preview');showErr('Errore: '+err.message);}}
-function render(){const a=S.analysis;const pct=a.compatibilita_percentuale||80;const col=pct>=80?'var(--green)':pct>=60?'var(--fire)':'#E53935';document.getElementById('pname').textContent=a.modello_consigliato||'--';document.getElementById('ptype').textContent=a.tipo_prodotto||'--';document.getElementById('ppow').textContent=a.potenza_kw||'--';document.getElementById('pdim').textContent=a.dimensioni||'--';document.getElementById('pstyle').textContent=a.stile_prodotto||'--';document.getElementById('ppos').textContent=a.posizione_ideale||'--';document.getElementById('palt').textContent=a.modello_alternativo||'--';document.getElementById('cpct').textContent=pct+'%';document.getElementById('cpct').style.color=col;document.getElementById('cbar').style.width=pct+'%';document.getElementById('cbar').style.background=col;document.getElementById('after-lbl').textContent=a.modello_consigliato||'Moretti Design';document.getElementById('vlist').innerHTML=(a.vantaggi||[]).map(v=>`<div class="vitem"><div class="vdot"></div><span>${v}</span></div>`).join('');document.getElementById('vis-txt').textContent=a.visualizzazione||'--';document.getElementById('tech-txt').textContent=a.considerazioni_tecniche||'--';document.getElementById('lead-quote').textContent='"'+(a.messaggio_commerciale||'')+'"';document.getElementById('res-title').textContent=`${a.modello_consigliato||'Moretti Design'} - ideale per la tua ${a.tipo_stanza||'stanza'}`;document.getElementById('gen-wrap').style.display=IMG_ENABLE?'block':'none';show('s-results');pill(3);document.getElementById('s-results').scrollIntoView({behavior:'smooth',block:'start'});}
-async function doGenerate(){if(!S.analysis)return;document.getElementById('gen-wrap').style.display='none';show('s-gen-loading');const prog=document.getElementById('gprog');let gp=5;const t=setInterval(()=>{gp=Math.min(gp+3,85);prog.style.width=gp+'%';if(gp>35)document.getElementById('gl1').classList.add('on');if(gp>65)document.getElementById('gl2').classList.add('on');},1500);try{const sr=await fetch(`${WORKER_URL}/generate`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:S.b64,imageMime:S.mime,prompt:S.analysis.prompt_immagine_en||`photorealistic interior design photo, Moretti Design ${S.analysis.modello_consigliato||'pellet stove'} installed ${S.analysis.posizione_ideale||'against wall'}, warm fire glow, 8k`,productName:S.analysis.modello_consigliato||''})});clearInterval(t);prog.style.width='100%';const sd=await sr.json();if(!sd.success||!sd.imageBase64)throw new Error(sd.error||'Generazione non riuscita');const imgSrc='data:'+(sd.mimeType||'image/jpeg')+';base64,'+sd.imageBase64;document.getElementById('after-img').src=imgSrc;document.getElementById('after-img').style.display='block';document.getElementById('after-ph').style.display='none';show('s-results');pill(4);document.getElementById('after-img').scrollIntoView({behavior:'smooth',block:'center'});}catch(err){clearInterval(t);show('s-results');document.getElementById('gen-wrap').style.display='block';showErr('Generazione non riuscita: '+err.message);}}
-function buildWA(){const a=S.analysis;const msg=`Ciao EcoCalore Lodigiano!\n\nMi chiamo ${document.getElementById('l-nome').value||'Cliente'}${document.getElementById('l-comune').value?', sono di '+document.getElementById('l-comune').value:''} e ho usato il vostro visualizzatore AI.\n\nIl sistema mi ha consigliato:\n🔥 *${a?.modello_consigliato||'--'}* (${a?.tipo_prodotto||'--'})\n&#x26A1; Potenza: ${a?.potenza_kw||'--'}\n&#x1F4D0; Dimensioni: ${a?.dimensioni||'--'}\n&#x1F4CD; Posizione: ${a?.posizione_ideale||'--'}\n${document.getElementById('l-note').value?'\n&#x1F4DD; Note: '+document.getElementById('l-note').value:''}${document.getElementById('l-tel').value?'\n📞 Tel: '+document.getElementById('l-tel').value:''}\n\nVorrei un preventivo gratuito. Grazie!`;document.getElementById('wa-link').href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);return true;}
-function show(id){['s-upload','s-preview','s-loading','s-gen-loading','s-results'].forEach(s=>{document.getElementById(s).style.display=s===id?'block':'none';});document.getElementById('s-error').style.display='none';}
+function pickFile(file){
+  if(!file?.type.startsWith('image/'))return showErr('File non valido.');
+  S.mime='image/jpeg';
+  const img=new Image();
+  const reader=new FileReader();
+  reader.onload=e=>{
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');
+      const MAX=1400;let w=img.width,h=img.height;
+      if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+      if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      const url=canvas.toDataURL('image/jpeg',0.82);
+      S.b64=url.split(',')[1];
+      document.getElementById('prev-img').src=url;
+      document.getElementById('before-img').src=url;
+      show('s-preview');pill(1);
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function doAnalyze(){
+  document.getElementById('analyze-btn').disabled=true;
+  show('s-loading');pill(2);
+  const ls=['ls0','ls1','ls2','ls3','ls4'];
+  const prog=document.getElementById('lprog');
+  let i=0;
+  const t=setInterval(()=>{
+    if(i>0){document.getElementById(ls[i-1]).classList.remove('on');document.getElementById(ls[i-1]).classList.add('done');}
+    if(i<ls.length){document.getElementById(ls[i]).classList.add('on');prog.style.width=`${(i+1)/ls.length*80}%`;i++;}
+  },1200);
+  try{
+    const res=await fetch(`${WORKER_URL}/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:S.b64,imageMime:S.mime})});
+    clearInterval(t);prog.style.width='100%';
+    const data=await res.json();
+    if(!res.ok||data.error)throw new Error(data.error||'Errore analisi');
+    S.analysis=data.analysis;
+    setTimeout(render,400);
+  }catch(err){
+    clearInterval(t);
+    document.getElementById('analyze-btn').disabled=false;
+    show('s-preview');
+    showErr('Errore: '+err.message);
+  }
+}
+
+function render(){
+  const a=S.analysis;
+  const pct=a.compatibilita_percentuale||80;
+  const col=pct>=80?'var(--green)':pct>=60?'var(--fire)':'#E53935';
+  document.getElementById('pname').textContent=a.modello_consigliato||'--';
+  document.getElementById('ptype').textContent=a.tipo_prodotto||'--';
+  document.getElementById('ppow').textContent=a.potenza_kw||'--';
+  document.getElementById('pdim').textContent=a.dimensioni||'--';
+  document.getElementById('pstyle').textContent=a.stile_prodotto||'--';
+  document.getElementById('ppos').textContent=a.posizione_ideale||'--';
+  document.getElementById('palt').textContent=a.modello_alternativo||'--';
+  document.getElementById('cpct').textContent=pct+'%';
+  document.getElementById('cpct').style.color=col;
+  document.getElementById('cbar').style.width=pct+'%';
+  document.getElementById('cbar').style.background=col;
+  document.getElementById('after-lbl').textContent=a.modello_consigliato||'Moretti Design';
+  document.getElementById('vlist').innerHTML=(a.vantaggi||[]).map(v=>`<div class="vitem"><div class="vdot"></div><span>${v}</span></div>`).join('');
+  document.getElementById('vis-txt').textContent=a.visualizzazione||'--';
+  document.getElementById('tech-txt').textContent=a.considerazioni_tecniche||'--';
+  document.getElementById('lead-quote').textContent='"'+(a.messaggio_commerciale||'')+'"';
+  document.getElementById('res-title').textContent=`${a.modello_consigliato||'Moretti Design'} - ideale per la tua ${a.tipo_stanza||'stanza'}`;
+
+  // ── FOTO REALE PRODOTTO ──────────────────────
+  const imgUrl=getProductImage(a.modello_consigliato);
+  const afterImg=document.getElementById('after-img');
+  const afterPh=document.getElementById('after-ph');
+  if(imgUrl){
+    afterImg.src=imgUrl;
+    afterImg.style.display='block';
+    afterPh.style.display='none';
+  } else {
+    afterPh.style.display='flex';
+    afterImg.style.display='none';
+  }
+
+  // ── LINK PAGINA PRODOTTO MORETTI ─────────────
+  const prodUrl=getProductUrl(a.modello_consigliato);
+  document.getElementById('moretti-link').href=prodUrl;
+  document.getElementById('moretti-link').textContent='🔗 Vedi '+( a.modello_consigliato||'il prodotto')+' su Moretti Design →';
+
+  show('s-results');pill(3);
+  document.getElementById('s-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function buildWA(){
+  const a=S.analysis;
+  const msg=`Ciao EcoCalore Lodigiano!\n\nMi chiamo ${document.getElementById('l-nome').value||'Cliente'}${document.getElementById('l-comune').value?', sono di '+document.getElementById('l-comune').value:''} e ho usato il vostro visualizzatore AI.\n\nIl sistema mi ha consigliato:\n🔥 *${a?.modello_consigliato||'--'}* (${a?.tipo_prodotto||'--'})\n⚡ Potenza: ${a?.potenza_kw||'--'}\n📐 Dimensioni: ${a?.dimensioni||'--'}\n📍 Posizione: ${a?.posizione_ideale||'--'}\n${document.getElementById('l-note').value?'\n📝 Note: '+document.getElementById('l-note').value:''}${document.getElementById('l-tel').value?'\n📞 Tel: '+document.getElementById('l-tel').value:''}\n\nVorrei un preventivo gratuito. Grazie!`;
+  document.getElementById('wa-link').href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);
+  return true;
+}
+
+function show(id){
+  ['s-upload','s-preview','s-loading','s-results'].forEach(s=>{document.getElementById(s).style.display=s===id?'block':'none';});
+  document.getElementById('s-error').style.display='none';
+}
 function showErr(msg){document.getElementById('err-msg').textContent='⚠️ '+msg;document.getElementById('s-error').style.display='block';}
 function pill(n){for(let i=1;i<=4;i++){const sp=document.getElementById('sp'+i),sn=document.getElementById('sn'+i);sp.className='stp'+(i===n?' on':i<n?' done':'');sn.textContent=i<n?'✓':i;}}
 function goBack(){show('s-upload');pill(1);}
-function resetAll(){S={b64:null,mime:'image/jpeg',analysis:null};document.getElementById('fi').value='';document.getElementById('after-img').style.display='none';document.getElementById('after-ph').style.display='flex';show('s-upload');pill(1);window.scrollTo({top:0,behavior:'smooth'});}
+function resetAll(){
+  S={b64:null,mime:'image/jpeg',analysis:null};
+  document.getElementById('fi').value='';
+  document.getElementById('after-img').style.display='none';
+  document.getElementById('after-ph').style.display='flex';
+  show('s-upload');pill(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 </script>
 </body>
 </html>
