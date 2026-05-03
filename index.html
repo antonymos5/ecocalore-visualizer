@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Trova la tua stufa ideale — EcoCalore Lodigiano x Moretti Design</title>
-<meta name="description" content="Rispondi a 4 domande e scopri la stufa Moretti Design perfetta per la tua casa. Gratis, immediato."/>
+<meta name="description" content="Scegli il tuo stile, rispondi a poche domande e scopri il camino o la stufa Moretti Design perfetti per la tua casa."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -26,7 +26,7 @@ h1 em{color:var(--fire);font-style:italic}
 .stp.on{color:var(--fire);background:rgba(232,103,26,.09)}.stp.done{color:var(--green)}
 .sn{width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
 .sep{color:var(--faint);padding:0 1px;font-size:13px}
-.main{max-width:680px;margin:0 auto;padding:0 20px 80px}
+.main{max-width:720px;margin:0 auto;padding:0 20px 80px}
 .qcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;margin-bottom:14px}
 .qtitle{font-family:var(--font-d);font-size:clamp(19px,2.8vw,26px);font-weight:700;margin-bottom:6px}
 .qsub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6}
@@ -46,6 +46,34 @@ h1 em{color:var(--fire);font-style:italic}
 .btn{padding:13px 26px;background:var(--fire);color:#fff;border:none;border-radius:11px;font-family:var(--font-b);font-size:15px;font-weight:500;cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
 .btn:hover:not(:disabled){background:var(--fire-light);transform:translateY(-1px)}.btn:disabled{opacity:.3;cursor:not-allowed}
 .btn-back{padding:11px 18px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:11px;font-family:var(--font-b);font-size:14px;cursor:pointer}
+
+/* ── GALLERIA ISPIRAZIONALE ── */
+.insp-section{margin-bottom:28px}
+.insp-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;font-weight:600}
+.insp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.insp-grid{grid-template-columns:repeat(2,1fr)}}
+.insp-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;border:2.5px solid transparent;transition:all .3s;aspect-ratio:3/4}
+.insp-card:hover{transform:translateY(-3px);border-color:rgba(232,103,26,.5)}
+.insp-card.sel{border-color:var(--fire);box-shadow:0 0 0 1px var(--fire), 0 8px 24px rgba(232,103,26,.25)}
+.insp-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.insp-card:hover img{transform:scale(1.04)}
+.insp-overlay{position:absolute;bottom:0;left:0;right:0;padding:14px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));opacity:0;transition:opacity .3s}
+.insp-card:hover .insp-overlay,.insp-card.sel .insp-overlay{opacity:1}
+.insp-name{font-family:var(--font-d);font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.insp-style{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.5px}
+.insp-check{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--fire);display:none;align-items:center;justify-content:center;font-size:13px;color:#fff;font-weight:700}
+.insp-card.sel .insp-check{display:flex}
+.insp-selected-label{font-size:12px;color:var(--fire);margin-top:10px;min-height:18px;font-weight:500;transition:opacity .3s}
+
+/* Campo testo libero */
+.vision-wrap{margin-top:6px}
+.vision-label{font-size:12px;color:var(--muted);margin-bottom:8px;display:block;font-weight:500}
+.vision-textarea{width:100%;background:var(--bg3);border:2px solid var(--border);border-radius:var(--r);padding:14px 16px;color:var(--text);font-family:var(--font-b);font-size:14px;resize:vertical;min-height:100px;outline:none;transition:border-color .2s;line-height:1.6}
+.vision-textarea:focus{border-color:rgba(232,103,26,.45)}
+.vision-textarea::placeholder{color:var(--faint)}
+.vision-hint{font-size:11px;color:var(--faint);margin-top:7px;line-height:1.6}
+
+/* Riepilogo */
 .prefs-recap{background:rgba(232,103,26,.06);border:1px solid rgba(232,103,26,.18);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .prefs-tag{background:rgba(232,103,26,.12);color:var(--fire);padding:2px 9px;border-radius:99px;font-size:10px;font-weight:500}
 .notice{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);border-radius:var(--r);padding:13px 16px;margin-bottom:16px;font-size:13px;color:#c9a84c;line-height:1.6}
@@ -63,7 +91,7 @@ h1 em{color:var(--fire);font-style:italic}
 .fl{font-size:44px;animation:flame 1s ease-in-out infinite;display:block;margin-bottom:16px}
 .lt{font-family:var(--font-d);font-size:24px;font-weight:600;margin-bottom:10px;color:var(--fire)}
 .lsub{font-size:14px;color:var(--muted);margin-bottom:22px}
-.lsteps{display:flex;flex-direction:column;gap:6px;max-width:320px;margin:0 auto}
+.lsteps{display:flex;flex-direction:column;gap:6px;max-width:340px;margin:0 auto}
 .lstep{font-size:13px;color:var(--faint);display:flex;align-items:center;gap:8px;transition:color .5s;padding:3px 0}
 .lstep.on{color:var(--fire)}.lstep.done{color:var(--green)}
 .lstep::before{content:'\25CB';font-size:10px;flex-shrink:0}.lstep.on::before{content:'\25CF'}.lstep.done::before{content:'\2713'}
@@ -132,23 +160,25 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
 </head>
 <body>
 <header><div class="hi"><div class="logo"><span class="lf">🔥</span><div><div class="ln">EcoCalore Lodigiano</div><div class="ls">Rivenditore Moretti Design · Casalmaiocco (LO)</div></div></div><a class="hcta" id="wa-header" href="#" target="_blank">📞 Preventivo gratuito</a></div></header>
+
 <div class="hero"><div class="hglow"></div>
 <div class="badge">✨ Gratuito · 2 minuti · Risultato personalizzato</div>
-<h1>Trova la stufa<br/><em>perfetta per te</em></h1>
-<p class="hsub">Rispondi a 4 semplici domande. L'AI analizza la tua stanza e ti consiglia il modello Moretti Design ideale.</p>
+<h1>Trasforma la tua casa con<br/><em>il camino dei tuoi sogni</em></h1>
+<p class="hsub">Scegli lo stile che ami, rispondi a poche domande. L'AI ti consiglia il prodotto Moretti Design perfetto e ti mostra come sarà.</p>
 <div class="steps">
-  <div class="stp on" id="sp1"><div class="sn" id="sn1">1</div><span>Combustibile</span></div><span class="sep">›</span>
-  <div class="stp" id="sp2"><div class="sn" id="sn2">2</div><span>La tua casa</span></div><span class="sep">›</span>
+  <div class="stp on" id="sp1"><div class="sn" id="sn1">1</div><span>Preferenze</span></div><span class="sep">›</span>
+  <div class="stp" id="sp2"><div class="sn" id="sn2">2</div><span>Il tuo stile</span></div><span class="sep">›</span>
   <div class="stp" id="sp3"><div class="sn" id="sn3">3</div><span>Foto stanza</span></div><span class="sep">›</span>
   <div class="stp" id="sp4"><div class="sn" id="sn4">4</div><span>Analisi AI</span></div><span class="sep">›</span>
-  <div class="stp" id="sp5"><div class="sn" id="sn5">5</div><span>Risultato</span></div>
+  <div class="stp" id="sp5"><div class="sn" id="sn5">5</div><span>Il tuo progetto</span></div>
 </div></div>
+
 <main class="main">
 
-<!-- STEP 1: COMBUSTIBILE -->
+<!-- STEP 1: PREFERENZE TECNICHE -->
 <div id="s-q1" class="fu">
 <div class="qcard">
-  <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+  <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
   <div class="qstep-label">Domanda 1 di 4</div>
   <div class="qtitle">Che combustibile preferisci?</div>
   <div class="qsub">Questa scelta determina la famiglia di prodotti più adatta a te.</div>
@@ -163,20 +193,31 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
     </div>
     <div class="choice" id="c-nonso" onclick="sel('combustibile','Non so ancora','c-nonso')">
       <div class="choice-icon">🤔</div>
-      <div><div class="choice-label">Non so ancora, aiutami a scegliere</div><div class="choice-desc">L'AI valuterà entrambe le opzioni e ti suggerirà la soluzione migliore.</div></div>
+      <div><div class="choice-label">Non so ancora, aiutami a scegliere</div><div class="choice-desc">L'AI valuterà entrambe e ti suggerirà la soluzione migliore.</div></div>
     </div>
   </div>
-  <div class="qnav"><div></div><button class="btn" id="btn-q1" onclick="goQ('s-q2',2)" disabled>Avanti →</button></div>
-</div>
 </div>
 
-<!-- STEP 2: CASA -->
-<div id="s-q2" style="display:none" class="fu">
 <div class="qcard">
-  <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+  <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
   <div class="qstep-label">Domanda 2 di 4</div>
+  <div class="qtitle">Hai già un caminetto esistente?</div>
+  <div class="choices">
+    <div class="choice" id="c-cam-si" onclick="sel('caminetto','Sì, ho già un caminetto esistente','c-cam-si')">
+      <div class="choice-icon">🏠</div>
+      <div><div class="choice-label">Sì, ho già un caminetto</div><div class="choice-desc">Possiamo inserire un camino a pellet o legna nell'apertura esistente.</div></div>
+    </div>
+    <div class="choice" id="c-cam-no" onclick="sel('caminetto','No, parto da zero','c-cam-no')">
+      <div class="choice-icon">🆕</div>
+      <div><div class="choice-label">No, parto da zero</div><div class="choice-desc">Installiamo una stufa da appoggio o costruiamo ex-novo il punto fuoco.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+  <div class="qstep-label">Domanda 3 di 4</div>
   <div class="qtitle">Quanti metri quadri vuoi riscaldare?</div>
-  <div class="qsub">Considera tutti gli ambienti che la stufa dovrà raggiungere.</div>
   <div class="choices col2">
     <div class="choice" id="c-mq1" onclick="sel('mq','Meno di 50 mq','c-mq1')"><div class="choice-icon">🏠</div><div><div class="choice-label">Meno di 50 m²</div><div class="choice-desc">Monolocale o singola stanza</div></div></div>
     <div class="choice" id="c-mq2" onclick="sel('mq','50-100 mq','c-mq2')"><div class="choice-icon">🏡</div><div><div class="choice-label">50 – 100 m²</div><div class="choice-desc">Appartamento medio</div></div></div>
@@ -184,42 +225,118 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
     <div class="choice" id="c-mq4" onclick="sel('mq','Oltre 200 mq','c-mq4')"><div class="choice-icon">🏰</div><div><div class="choice-label">Oltre 200 m²</div><div class="choice-desc">Villa grande o più piani</div></div></div>
   </div>
 </div>
+
 <div class="qcard">
-  <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
-  <div class="qstep-label">Domanda 3 di 4</div>
+  <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+  <div class="qstep-label">Domanda 4 di 4</div>
   <div class="qtitle">Quante stanze vuoi riscaldare?</div>
   <div class="choices">
     <div class="choice" id="c-s1" onclick="sel('stanze','Solo questa stanza','c-s1')"><div class="choice-icon">🚪</div><div><div class="choice-label">Solo questa stanza</div><div class="choice-desc">Riscaldamento localizzato e puntuale</div></div></div>
-    <div class="choice" id="c-s2" onclick="sel('stanze','2-3 stanze con sistema Multi-Room','c-s2')"><div class="choice-icon">🏠</div><div><div class="choice-label">2-3 stanze (Multi-Room)</div><div class="choice-desc">Diffondo il calore tramite canalizzazioni Moretti</div></div></div>
-    <div class="choice" id="c-s3" onclick="sel('stanze','Tutta la casa tramite impianto idraulico','c-s3')"><div class="choice-icon">🌡️</div><div><div class="choice-label">Tutta la casa (impianto idraulico)</div><div class="choice-desc">Stufa Aqua collegata a radiatori o pavimento radiante</div></div></div>
+    <div class="choice" id="c-s2" onclick="sel('stanze','2-3 stanze con sistema Multi-Room','c-s2')"><div class="choice-icon">🏠</div><div><div class="choice-label">2-3 stanze (Multi-Room)</div><div class="choice-desc">Calore diffuso tramite canalizzazioni Moretti</div></div></div>
+    <div class="choice" id="c-s3" onclick="sel('stanze','Tutta la casa tramite impianto idraulico','c-s3')"><div class="choice-icon">🌡️</div><div><div class="choice-label">Tutta la casa (impianto idraulico)</div><div class="choice-desc">Versione Aqua collegata a radiatori o pavimento</div></div></div>
   </div>
+  <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border)">
+    <div class="qstep-label" style="margin-bottom:6px">Budget indicativo <span style="color:var(--faint);font-size:10px">(facoltativo — non influenza il consiglio tecnico)</span></div>
+    <div class="choices col2">
+      <div class="choice" id="c-b1" onclick="sel('budget','Meno di 3.000€','c-b1')"><div class="choice-icon">💰</div><div><div class="choice-label">Meno di 3.000€</div></div></div>
+      <div class="choice" id="c-b2" onclick="sel('budget','3.000€ – 5.000€','c-b2')"><div class="choice-icon">💰💰</div><div><div class="choice-label">3.000€ – 5.000€</div></div></div>
+      <div class="choice" id="c-b3" onclick="sel('budget','5.000€ – 8.000€','c-b3')"><div class="choice-icon">💰💰💰</div><div><div class="choice-label">5.000€ – 8.000€</div></div></div>
+      <div class="choice" id="c-b4" onclick="sel('budget','Oltre 8.000€','c-b4')"><div class="choice-icon">👑</div><div><div class="choice-label">Oltre 8.000€</div></div></div>
+    </div>
+  </div>
+  <div class="qnav"><div></div><button class="btn" id="btn-q1" onclick="goQ('s-q2',2)" disabled>Avanti →</button></div>
 </div>
+</div>
+
+<!-- STEP 2: STILE + IDEA LIBERA -->
+<div id="s-q2" style="display:none" class="fu">
 <div class="qcard">
-  <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
-  <div class="qstep-label">Domanda 4 di 4</div>
-  <div class="qtitle">Qual è il tuo budget indicativo?</div>
-  <div class="qsub">Solo il prodotto, esclusa l'installazione.</div>
-  <div class="choices col2">
-    <div class="choice" id="c-b1" onclick="sel('budget','Meno di 3.000€','c-b1')"><div class="choice-icon">💰</div><div><div class="choice-label">Meno di 3.000€</div></div></div>
-    <div class="choice" id="c-b2" onclick="sel('budget','3.000€ – 5.000€','c-b2')"><div class="choice-icon">💰💰</div><div><div class="choice-label">3.000€ – 5.000€</div></div></div>
-    <div class="choice" id="c-b3" onclick="sel('budget','5.000€ – 8.000€','c-b3')"><div class="choice-icon">💰💰💰</div><div><div class="choice-label">5.000€ – 8.000€</div></div></div>
-    <div class="choice" id="c-b4" onclick="sel('budget','Oltre 8.000€','c-b4')"><div class="choice-icon">👑</div><div><div class="choice-label">Oltre 8.000€</div></div></div>
+  <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+  <div class="qstep-label">Scegli il tuo stile</div>
+  <div class="qtitle">Quale di questi ambienti ti ispira di più? ✨</div>
+  <div class="qsub">Clicca l'immagine che ti colpisce — sono tutti lavori realizzabili con i prodotti Moretti Design. Puoi sceglierne anche più di uno.</div>
+
+  <!-- GALLERIA ISPIRAZIONALE -->
+  <div class="insp-section">
+    <div class="insp-grid">
+
+      <div class="insp-card" id="insp1" onclick="toggleInsp(1, 'Soggiorno elegante con boiserie e pannelli decorativi, camino a pellet/legna inserito nella parete con mensola in legno e mobile TV coordinato, stile classico contemporaneo neutro')">
+        <img src="https://antonymos5.github.io/ecocalore-visualizer/insp1.jpg" alt="Soggiorno boiserie classico"/>
+        <div class="insp-overlay">
+          <div class="insp-name">Soggiorno Elegante</div>
+          <div class="insp-style">Boiserie · Classico contemporaneo · Neutro</div>
+        </div>
+        <div class="insp-check">✓</div>
+      </div>
+
+      <div class="insp-card" id="insp2" onclick="toggleInsp(2, 'Stufa a pellet moderna stone/cemento in ambiente minimal, parete grigia liscia, pavimento in gres porcellanato grande formato, arredo essenziale di design, atmosfera nordica sofisticata')">
+        <img src="https://antonymos5.github.io/ecocalore-visualizer/insp2.jpg" alt="Stufa moderna stone"/>
+        <div class="insp-overlay">
+          <div class="insp-name">Moderno Stone</div>
+          <div class="insp-style">Minimal · Stone · Nordico</div>
+        </div>
+        <div class="insp-check">✓</div>
+      </div>
+
+      <div class="insp-card" id="insp3" onclick="toggleInsp(3, 'Stufa cilindrica panoramica 360 gradi in ambiente open space loft moderno, pavimento in legno chiaro, altezze importanti, vista città, design ultra contemporaneo e scenografico')">
+        <img src="https://antonymos5.github.io/ecocalore-visualizer/insp3.jpg" alt="Loft stufa cilindrica"/>
+        <div class="insp-overlay">
+          <div class="insp-name">Loft Panoramico</div>
+          <div class="insp-style">Open space · 360° · Ultra moderno</div>
+        </div>
+        <div class="insp-check">✓</div>
+      </div>
+
+      <div class="insp-card" id="insp4" onclick="toggleInsp(4, 'Camino/insert incassato nella parete in appartamento moderno con finestre grandi, stile minimalista urbano, pareti tortora, quadro di design, arredo contemporaneo')">
+        <img src="https://antonymos5.github.io/ecocalore-visualizer/insp4.jpg" alt="Appartamento moderno insert"/>
+        <div class="insp-overlay">
+          <div class="insp-name">Appartamento Moderno</div>
+          <div class="insp-style">Insert · Urban · Minimal</div>
+        </div>
+        <div class="insp-check">✓</div>
+      </div>
+
+      <div class="insp-card" id="insp5" onclick="toggleInsp(5, 'Camino insert a parete in loft industriale minimal con soffitti alti, pareti grigio chiaro, cucina a vista con bancone, illuminazione di design, stile archi-design contemporaneo')">
+        <img src="https://antonymos5.github.io/ecocalore-visualizer/insp5.jpg" alt="Loft industrial minimal"/>
+        <div class="insp-overlay">
+          <div class="insp-name">Loft Industrial</div>
+          <div class="insp-style">Industrial · Archi-design · Soffitti alti</div>
+        </div>
+        <div class="insp-check">✓</div>
+      </div>
+
+    </div>
+    <div class="insp-selected-label" id="insp-label"></div>
   </div>
-  <div class="qnav"><button class="btn-back" onclick="goQ('s-q1',1)">← Indietro</button><button class="btn" id="btn-q2" onclick="goQ('s-upload',3)" disabled>Avanti →</button></div>
+
+  <!-- CAMPO LIBERO -->
+  <div style="padding-top:20px;border-top:1px solid var(--border)">
+    <div class="qtitle" style="font-size:clamp(17px,2.4vw,22px);margin-bottom:6px">Raccontaci la tua idea ✍️</div>
+    <div class="qsub" style="margin-bottom:14px">Aggiungi dettagli, materiali, lavori che vorresti fare. Più scrivi, più il consiglio sarà preciso.</div>
+    <div class="vision-wrap">
+      <textarea class="vision-textarea" id="vision-text" placeholder="Esempio: Vorrei un camino a pellet con una parete in cartongesso intorno, mensole in legno sui lati e una striscia LED. La stanza è moderna con pareti grigie. Vorrei anche rifare la tinteggiatura e aggiungere una boiserie bassa..."></textarea>
+      <div class="vision-hint">💡 Puoi descrivere anche lavori edili e finiture — EcoCalore Lodigiano realizza ristrutturazioni complete.</div>
+    </div>
+  </div>
+
+  <div class="qnav">
+    <button class="btn-back" onclick="goQ('s-q1',1)">← Indietro</button>
+    <button class="btn" onclick="goQ('s-upload',3)">Avanti — Carica foto →</button>
+  </div>
 </div>
 </div>
 
 <!-- STEP 3: FOTO -->
 <div id="s-upload" style="display:none" class="fu">
   <div id="recap1" class="prefs-recap"></div>
-  <div class="notice">📷 <strong>Ultima cosa:</strong> Carica la foto della stanza dove vuoi installare la stufa. Scatta dalla porta d'ingresso così si vedono bene le pareti.</div>
+  <div class="notice">📷 <strong>Ultima cosa:</strong> Carica la foto della stanza dove vuoi installare il prodotto. Se hai già un caminetto, fotografa quello. Altrimenti scatta dalla porta d'ingresso.</div>
   <div class="uz" id="uz" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="dropFile(event)" onclick="document.getElementById('fi').click()">
     <input type="file" id="fi" accept="image/*" style="display:none" onchange="pickFile(this.files[0])"/>
     <span class="ui">📸</span><div class="ut">Trascina qui la foto della tua stanza</div>
     <div class="us">oppure clicca per selezionare</div>
     <div class="uf"><span class="ufmt">JPG</span><span class="ufmt">PNG</span><span class="ufmt">WEBP</span><span class="ufmt">HEIC</span></div>
   </div>
-  <div style="margin-top:12px"><button class="btn-back" onclick="goQ('s-q2',2)">← Modifica preferenze</button></div>
+  <div style="margin-top:12px"><button class="btn-back" onclick="goQ('s-q2',2)">← Indietro</button></div>
 </div>
 
 <!-- STEP 3b: PREVIEW -->
@@ -227,21 +344,21 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
   <div id="recap2" class="prefs-recap"></div>
   <div class="pw">
     <div class="piw"><img id="prev-img" src="" alt="Stanza"/><div class="pb">📷 La tua stanza</div></div>
-    <div class="pa"><button class="btng" onclick="show('s-upload')">↩ Cambia foto</button><button class="btn" id="analyze-btn" onclick="doAnalyze()">🔍 Analizza con AI</button></div>
+    <div class="pa"><button class="btng" onclick="show('s-upload')">↩ Cambia foto</button><button class="btn" id="analyze-btn" onclick="doAnalyze()">🔥 Analizza e trova il mio prodotto</button></div>
   </div>
 </div>
 
 <!-- STEP 4: LOADING -->
 <div id="s-loading" style="display:none">
 <div class="lcard"><span class="fl">🔥</span>
-  <div class="lt">Analisi in corso…</div>
-  <div class="lsub">L'AI studia la tua stanza e le tue preferenze per trovare il modello perfetto</div>
+  <div class="lt">Creazione del tuo progetto…</div>
+  <div class="lsub">L'AI studia la tua stanza, il tuo stile e le tue preferenze per trovare il prodotto perfetto</div>
   <div class="lsteps">
-    <div class="lstep on" id="ls0">Analisi preferenze e mq</div>
-    <div class="lstep" id="ls1">Valutazione stile e arredo</div>
-    <div class="lstep" id="ls2">Selezione modello dal catalogo 2026</div>
-    <div class="lstep" id="ls3">Calcolo potenza e posizione ottimale</div>
-    <div class="lstep" id="ls4">Preparazione consiglio personalizzato</div>
+    <div class="lstep on" id="ls0">Analisi combustibile e configurazione</div>
+    <div class="lstep" id="ls1">Lettura dello stile scelto</div>
+    <div class="lstep" id="ls2">Valutazione layout e arredo stanza</div>
+    <div class="lstep" id="ls3">Selezione modello Moretti Design 2026</div>
+    <div class="lstep" id="ls4">Preparazione del tuo progetto personalizzato</div>
   </div>
   <div class="trk"><div class="fill" id="lprog" style="width:0%"></div></div>
 </div></div>
@@ -251,7 +368,7 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
 
 <!-- STEP 5: RISULTATI -->
 <div id="s-results" style="display:none">
-  <div class="fu" style="margin-bottom:10px"><div class="rbadge">✅ Consiglio personalizzato pronto</div></div>
+  <div class="fu" style="margin-bottom:10px"><div class="rbadge">✅ Il tuo progetto è pronto</div></div>
   <div class="rtitle fu2" id="res-title">Il prodotto Moretti Design ideale per te</div>
   <div class="prodcard fu2">
     <div>
@@ -267,7 +384,7 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
     <div class="palt"><div class="palt-lbl">In alternativa</div><div class="palt-val" id="palt">—</div></div>
   </div>
   <div class="ccard fu3">
-    <div class="ch"><span class="cl">Compatibilità con le tue esigenze</span><span class="cp" id="cpct">—%</span></div>
+    <div class="ch"><span class="cl">Compatibilità con il tuo stile e le tue esigenze</span><span class="cp" id="cpct">—%</span></div>
     <div class="trk"><div class="fill" id="cbar" style="width:0%"></div></div>
   </div>
   <div class="bag fu3">
@@ -280,15 +397,19 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
   </div>
   <a class="moretti-btn fu3" id="moretti-link" href="https://morettidesign.it/prodotti/" target="_blank">🔗 Vedi il prodotto ufficiale su Moretti Design →</a>
   <div class="vcard fu3"><div class="vtitle">✨ Perché questo modello è perfetto per te</div><div id="vlist"></div></div>
-  <div class="viscard fu4"><div class="visglow"></div><div class="viseyebrow">🏠 Come apparirà la tua stanza</div><p class="vistxt" id="vis-txt">—</p></div>
-  <div class="tcard fu4"><div class="tlabel">🔧 Considerazioni tecniche</div><p class="ttxt" id="tech-txt">—</p></div>
+  <div class="viscard fu4"><div class="visglow"></div><div class="viseyebrow">🏠 Come apparirà il tuo ambiente</div><p class="vistxt" id="vis-txt">—</p></div>
+  <div class="tcard fu4"><div class="tlabel">🔧 Considerazioni tecniche per l'installazione</div><p class="ttxt" id="tech-txt">—</p></div>
+  <div class="tcard fu4" id="extra-works-card" style="display:none">
+    <div class="tlabel">🏗️ Lavori complementari — EcoCalore Lodigiano</div>
+    <p class="ttxt" id="extra-works-txt">—</p>
+  </div>
   <div class="leadcard fu4">
     <div class="leadglow"></div>
     <div class="leadq" id="lead-quote">—</div>
     <div class="lform">
       <div class="lrow"><input class="linput" type="text" id="l-nome" placeholder="Il tuo nome *"/><input class="linput" type="tel" id="l-tel" placeholder="Telefono *"/></div>
       <div class="lrow"><input class="linput" type="text" id="l-comune" placeholder="Il tuo comune"/><input class="linput" type="email" id="l-email" placeholder="Email (opzionale)"/></div>
-      <input class="linput" style="width:100%;margin-bottom:9px" type="text" id="l-note" placeholder="Note: misure stanza, impianto attuale…"/>
+      <input class="linput" style="width:100%;margin-bottom:9px" type="text" id="l-note" placeholder="Altre note…"/>
       <div class="lactions"><a class="btnwa" id="wa-link" href="#" target="_blank" onclick="return buildWA()">💬 Richiedi preventivo gratuito via WhatsApp</a></div>
       <div class="linfo">🔒 Dati non salvati · Contattato solo da EcoCalore Lodigiano · Preventivo sempre gratuito</div>
     </div>
@@ -297,12 +418,15 @@ footer{border-top:1px solid var(--border);padding:22px 20px;text-align:center}
 </div>
 </main>
 <footer><div class="ft">© 2025 EcoCalore Lodigiano — Verde Oliva S.r.l.s · P.IVA IT10927440965 · Casalmaiocco (LO)</div><div class="fs">Rivenditore autorizzato Moretti Design · Powered by Claude AI · Foto prodotti: © Moretti Design</div></footer>
+
 <script>
 const WORKER_URL='https://ecocalore-api.antoniomoscato.workers.dev';
 const WA_NUMBER='393471234567';
 let S={b64:null,mime:'image/jpeg',analysis:null};
-let P={combustibile:null,mq:null,stanze:null,budget:null};
+let P={combustibile:null,caminetto:null,mq:null,stanze:null,budget:null};
+let INSP_SEL={}; // stili selezionati dalla galleria
 
+// ── FOTO REALI MORETTI ──
 const MI={
   'CLESSIDRA GLASS PELLET':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente19.png',
   'CLESSIDRA AQUA':'https://morettidesign.it/wp-content/uploads/2020/06/gamma-intelligente19.png',
@@ -348,31 +472,92 @@ const MU={
   'KORIN':'https://morettidesign.it/prodotti/korin-700',
   'SLOT':'https://morettidesign.it/prodotti/slot-vision/'
 };
-
 function getImg(n){if(!n)return null;const u=n.toUpperCase();for(const[k,v]of Object.entries(MI)){if(u.includes(k))return v;}const f=u.split(' ')[0];for(const[k,v]of Object.entries(MI)){if(k.startsWith(f))return v;}return null;}
 function getUrl(n){if(!n)return'https://morettidesign.it/prodotti/';const u=n.toUpperCase();for(const[k,v]of Object.entries(MU)){if(u.includes(k))return v;}return'https://morettidesign.it/prodotti/';}
 
 document.getElementById('wa-header').href='https://wa.me/'+WA_NUMBER;
 
-// Seleziona risposta questionario
-const groups={combustibile:['c-pellet','c-legna','c-nonso'],mq:['c-mq1','c-mq2','c-mq3','c-mq4'],stanze:['c-s1','c-s2','c-s3'],budget:['c-b1','c-b2','c-b3','c-b4']};
+// ── GALLERIA ISPIRAZIONALE ──
+const INSP_LABELS={
+  1:'Soggiorno Elegante con Boiserie',
+  2:'Moderno Stone & Minimal',
+  3:'Loft Panoramico 360°',
+  4:'Appartamento Urban Moderno',
+  5:'Loft Industrial Archi-Design'
+};
+const INSP_STYLES={
+  1:'Soggiorno elegante con boiserie e pannelli decorativi, camino inserito nella parete con mensola in legno e mobile TV coordinato, stile classico contemporaneo neutro',
+  2:'Stufa a pellet moderna stone/cemento in ambiente minimal, parete grigia liscia, pavimento in gres porcellanato grande formato, arredo essenziale di design, atmosfera nordica sofisticata',
+  3:'Stufa cilindrica panoramica 360 gradi in ambiente open space loft moderno, pavimento in legno chiaro, altezze importanti, vista città, design ultra contemporaneo e scenografico',
+  4:'Camino/insert incassato nella parete in appartamento moderno con finestre grandi, stile minimalista urbano, pareti tortora, quadro di design, arredo contemporaneo',
+  5:'Camino insert a parete in loft industriale minimal con soffitti alti, pareti grigio chiaro, cucina a vista con bancone, illuminazione di design, stile archi-design contemporaneo'
+};
+
+function toggleInsp(n, style){
+  const el=document.getElementById('insp'+n);
+  if(INSP_SEL[n]){
+    delete INSP_SEL[n];
+    el.classList.remove('sel');
+  } else {
+    INSP_SEL[n]=style;
+    el.classList.add('sel');
+  }
+  updateInspLabel();
+  updateVisionFromInsp();
+}
+
+function updateInspLabel(){
+  const selected=Object.keys(INSP_SEL).map(k=>INSP_LABELS[k]);
+  const lbl=document.getElementById('insp-label');
+  if(selected.length>0){
+    lbl.textContent='✓ Stile selezionato: '+selected.join(' + ');
+    lbl.style.opacity='1';
+  } else {
+    lbl.textContent='';
+    lbl.style.opacity='0';
+  }
+}
+
+function updateVisionFromInsp(){
+  const ta=document.getElementById('vision-text');
+  const inspText=Object.values(INSP_SEL).join('. ');
+  const currentVal=ta.value;
+  // Sostituisce solo la parte di testo ispirazionale (prima riga), mantiene quello scritto dall'utente
+  const marker='[STILE]:';
+  const lines=currentVal.split('\n').filter(l=>!l.startsWith(marker));
+  if(inspText){
+    ta.value=marker+' '+inspText+'\n'+lines.join('\n');
+  } else {
+    ta.value=lines.join('\n');
+  }
+}
+
+// ── QUESTIONARIO ──
+const groups={
+  combustibile:['c-pellet','c-legna','c-nonso'],
+  caminetto:['c-cam-si','c-cam-no'],
+  mq:['c-mq1','c-mq2','c-mq3','c-mq4'],
+  stanze:['c-s1','c-s2','c-s3'],
+  budget:['c-b1','c-b2','c-b3','c-b4']
+};
 function sel(pref,val,id){
   (groups[pref]||[]).forEach(i=>{const e=document.getElementById(i);if(e)e.classList.remove('sel');});
   document.getElementById(id).classList.add('sel');
   P[pref]=val;
-  const b1=document.getElementById('btn-q1'),b2=document.getElementById('btn-q2');
-  if(b1)b1.disabled=!P.combustibile;
-  if(b2)b2.disabled=!(P.mq&&P.stanze&&P.budget);
+  const b=document.getElementById('btn-q1');
+  if(b)b.disabled=!(P.combustibile&&P.caminetto&&P.mq&&P.stanze);
 }
 
 function goQ(sid,step){show(sid);pill(step);recap();window.scrollTo({top:0,behavior:'smooth'});}
 
 function recap(){
-  const tags=[P.combustibile,P.mq,P.stanze,P.budget].filter(Boolean).map(t=>`<span class="prefs-tag">${t}</span>`).join('');
-  const html='<strong style="color:var(--fire);font-size:10px;margin-right:4px">LE TUE PREFERENZE:</strong>'+tags;
+  const tags=[P.combustibile,P.caminetto,P.mq,P.stanze,P.budget].filter(Boolean).map(t=>`<span class="prefs-tag">${t}</span>`).join('');
+  const inspTags=Object.keys(INSP_SEL).map(k=>`<span class="prefs-tag">🎨 ${INSP_LABELS[k]}</span>`).join('');
+  const html='<strong style="color:var(--fire);font-size:10px;margin-right:4px">LE TUE PREFERENZE:</strong>'+tags+inspTags;
   ['recap1','recap2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=html;});
 }
 
+// ── FOTO ──
 function dropFile(e){e.preventDefault();document.getElementById('uz').classList.remove('drag');pickFile(e.dataTransfer.files[0]);}
 function pickFile(file){
   if(!file?.type.startsWith('image/'))return showErr('File non valido.');
@@ -388,6 +573,7 @@ function pickFile(file){
   };img.src=e.target.result;};reader.readAsDataURL(file);
 }
 
+// ── ANALISI ──
 async function doAnalyze(){
   document.getElementById('analyze-btn').disabled=true;show('s-loading');pill(4);
   const ls=['ls0','ls1','ls2','ls3','ls4'];const prog=document.getElementById('lprog');let i=0;
@@ -395,14 +581,23 @@ async function doAnalyze(){
     if(i>0){document.getElementById(ls[i-1]).classList.remove('on');document.getElementById(ls[i-1]).classList.add('done');}
     if(i<ls.length){document.getElementById(ls[i]).classList.add('on');prog.style.width=`${(i+1)/ls.length*80}%`;i++;}
   },1200);
-  try{
-    const userMsg=`PREFERENZE OBBLIGATORIE DEL CLIENTE:
-- Combustibile: ${P.combustibile||'nessuna preferenza'} → Rispetta SEMPRE questa scelta. Se vuole Pellet consiglia solo stufe a pellet. Se vuole Legna solo stufe a legna.
-- Superficie da riscaldare: ${P.mq||'non specificata'} → Adatta la potenza in kW di conseguenza.
-- Stanze: ${P.stanze||'non specificato'} → Se vuole tutta la casa via impianto idraulico, consiglia versione AQUA. Se vuole Multi-Room, scegli modelli canalizzabili.
-- Budget: ${P.budget||'non specificato'} → Rispetta il budget, non superarlo.
 
-Analizza la stanza in foto e fornisci il JSON richiesto con il prodotto Moretti Design che rispetta tutte queste preferenze.`;
+  const vision=document.getElementById('vision-text').value.trim();
+  const inspSelected=Object.values(INSP_SEL);
+
+  const userMsg=`PROFILO CLIENTE:
+- Combustibile scelto: ${P.combustibile||'nessuna preferenza'} → OBBLIGATORIO: rispetta questa scelta. Se vuole Pellet consiglia SOLO prodotti a pellet. Se vuole Legna, SOLO a legna. Se ha caminetto + vuole Pellet → insert a PELLET (Slot Vision, Compact Glass).
+- Caminetto esistente: ${P.caminetto||'non specificato'} → Se ha già un caminetto, dai priorità agli insert.
+- Superficie: ${P.mq||'non specificata'} → Scegli la potenza adeguata in kW. Non escludere prodotti per il prezzo.
+- Stanze: ${P.stanze||'non specificato'} → Se vuole tutta la casa via idraulico → versione Aqua. Se Multi-Room → modelli canalizzabili.
+${inspSelected.length>0?`\nSTILE SCELTO DALLA GALLERIA:\n${inspSelected.map((s,i)=>`${i+1}. ${s}`).join('\n')}\n→ Il prodotto e la sua installazione devono rispecchiare questo stile estetico.`:''}
+${vision?`\nIDEA E DESIDERI DEL CLIENTE:\n"${vision}"\n→ Tieni conto di questi desideri. Se menziona lavori edili (cartongesso, mensole, LED, tinteggiatura, boiserie ecc.), aggiungi nel campo "lavori_accessori" cosa può fare EcoCalore Lodigiano.`:''}
+
+IMPORTANTE: Il budget NON deve influenzare la selezione del prodotto. Consiglia sempre il prodotto tecnicamente e esteticamente più adatto.
+
+Analizza la stanza in foto e fornisci il JSON con il prodotto Moretti Design più adatto.`;
+
+  try{
     const res=await fetch(`${WORKER_URL}/analyze`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:S.b64,imageMime:S.mime,userMessage:userMsg})});
     clearInterval(t);prog.style.width='100%';
     const data=await res.json();if(!res.ok||data.error)throw new Error(data.error||'Errore analisi');
@@ -427,7 +622,13 @@ function render(){
   document.getElementById('vis-txt').textContent=a.visualizzazione||'--';
   document.getElementById('tech-txt').textContent=a.considerazioni_tecniche||'--';
   document.getElementById('lead-quote').textContent='"'+(a.messaggio_commerciale||'')+'"';
-  document.getElementById('res-title').textContent=`${a.modello_consigliato||'Moretti Design'} — ideale per la tua ${a.tipo_stanza||'stanza'}`;
+  document.getElementById('res-title').textContent=`Il tuo progetto — ${a.modello_consigliato||'Moretti Design'}`;
+
+  if(a.lavori_accessori){
+    document.getElementById('extra-works-txt').textContent=a.lavori_accessori;
+    document.getElementById('extra-works-card').style.display='block';
+  }
+
   const imgUrl=getImg(a.modello_consigliato);
   const ai=document.getElementById('after-img'),ap=document.getElementById('after-ph');
   if(imgUrl){ai.src=imgUrl;ai.style.display='block';ap.style.display='none';}
@@ -439,7 +640,10 @@ function render(){
 
 function buildWA(){
   const a=S.analysis;
-  const msg=`Ciao EcoCalore Lodigiano!\n\nMi chiamo ${document.getElementById('l-nome').value||'Cliente'}${document.getElementById('l-comune').value?', sono di '+document.getElementById('l-comune').value:''} e ho usato il vostro configuratore AI.\n\nLe mie preferenze:\n🔵 Combustibile: ${P.combustibile||'--'}\n📐 Superficie: ${P.mq||'--'}\n🚪 Stanze: ${P.stanze||'--'}\n💰 Budget: ${P.budget||'--'}\n\nIl sistema mi ha consigliato:\n🔥 *${a?.modello_consigliato||'--'}* (${a?.tipo_prodotto||'--'})\n⚡ Potenza: ${a?.potenza_kw||'--'}\n💶 Prezzo: ${a?.prezzo_indicativo||'--'}\n📍 Posizione: ${a?.posizione_ideale||'--'}\n${document.getElementById('l-note').value?'\n📝 Note: '+document.getElementById('l-note').value:''}${document.getElementById('l-tel').value?'\n📞 Tel: '+document.getElementById('l-tel').value:''}\n\nVorrei un preventivo gratuito. Grazie!`;
+  const vision=document.getElementById('vision-text').value.trim();
+  const inspNames=Object.keys(INSP_SEL).map(k=>INSP_LABELS[k]).join(', ');
+  const fascia=P.budget&&P.budget.includes('8.000')?' 👑 CLIENTE FASCIA ALTA':'';
+  const msg=`Ciao EcoCalore Lodigiano!${fascia}\n\nMi chiamo ${document.getElementById('l-nome').value||'Cliente'}${document.getElementById('l-comune').value?', sono di '+document.getElementById('l-comune').value:''} e ho usato il vostro configuratore AI.\n\nLe mie preferenze:\n🔵 Combustibile: ${P.combustibile||'--'}\n🏠 Caminetto: ${P.caminetto||'--'}\n📐 Superficie: ${P.mq||'--'}\n🚪 Stanze: ${P.stanze||'--'}\n💰 Budget: ${P.budget||'non specificato'}\n${inspNames?'🎨 Stile: '+inspNames:''}${vision?'\n\n💬 La mia idea:\n"'+vision+'"':''}\n\nIl configuratore mi ha consigliato:\n🔥 *${a?.modello_consigliato||'--'}* (${a?.tipo_prodotto||'--'})\n⚡ Potenza: ${a?.potenza_kw||'--'}\n💶 Prezzo: ${a?.prezzo_indicativo||'--'}\n📍 Posizione: ${a?.posizione_ideale||'--'}\n${a?.lavori_accessori?'\n🏗️ Lavori richiesti:\n'+a.lavori_accessori:''}${document.getElementById('l-note').value?'\n📝 Note: '+document.getElementById('l-note').value:''}${document.getElementById('l-tel').value?'\n📞 Tel: '+document.getElementById('l-tel').value:''}\n\nVorrei un preventivo completo. Grazie!`;
   document.getElementById('wa-link').href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);return true;
 }
 
@@ -450,11 +654,16 @@ function show(id){
 function showErr(msg){document.getElementById('err-msg').textContent='⚠️ '+msg;document.getElementById('s-error').style.display='block';}
 function pill(n){for(let i=1;i<=5;i++){const sp=document.getElementById('sp'+i),sn=document.getElementById('sn'+i);if(sp&&sn){sp.className='stp'+(i===n?' on':i<n?' done':'');sn.textContent=i<n?'✓':i;}}}
 function resetAll(){
-  S={b64:null,mime:'image/jpeg',analysis:null};P={combustibile:null,mq:null,stanze:null,budget:null};
-  document.getElementById('fi').value='';document.getElementById('after-img').style.display='none';document.getElementById('after-ph').style.display='flex';
-  document.querySelectorAll('.choice').forEach(e=>e.classList.remove('sel'));
-  const b1=document.getElementById('btn-q1'),b2=document.getElementById('btn-q2');
-  if(b1)b1.disabled=true;if(b2)b2.disabled=true;
+  S={b64:null,mime:'image/jpeg',analysis:null};
+  P={combustibile:null,caminetto:null,mq:null,stanze:null,budget:null};
+  INSP_SEL={};
+  document.getElementById('fi').value='';
+  document.getElementById('vision-text').value='';
+  document.getElementById('after-img').style.display='none';document.getElementById('after-ph').style.display='flex';
+  document.getElementById('extra-works-card').style.display='none';
+  document.getElementById('insp-label').textContent='';
+  document.querySelectorAll('.choice,.insp-card').forEach(e=>e.classList.remove('sel'));
+  const b=document.getElementById('btn-q1');if(b)b.disabled=true;
   show('s-q1');pill(1);window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
